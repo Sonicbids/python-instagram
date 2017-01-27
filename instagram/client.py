@@ -2,7 +2,7 @@ from . import oauth2
 from .bind import bind_method
 from .models import MediaShortcode, Media, User, Location, Tag, Comment, Relationship
 
-MEDIA_ACCEPT_PARAMETERS = ["count", "max_id"]
+MEDIA_ACCEPT_PARAMETERS = ["access_token"]
 SEARCH_ACCEPT_PARAMETERS = ["q", "count"]
 
 SUPPORTED_FORMATS = ['json']
@@ -106,8 +106,8 @@ class InstagramAPI(oauth2.OAuth2API):
                 paginates=True)
 
     user_recent_media = bind_method(
-                path="/users/{user_id}/media/recent",
-                accepts_parameters=MEDIA_ACCEPT_PARAMETERS + ['user_id', 'min_id', 'max_timestamp', 'min_timestamp'],
+                path="/users/self/media/recent",
+                accepts_parameters=MEDIA_ACCEPT_PARAMETERS,
                 root_class=Media,
                 paginates=True)
 
