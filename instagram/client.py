@@ -7,6 +7,7 @@ SEARCH_ACCEPT_PARAMETERS = ["q", "count"]
 
 SUPPORTED_FORMATS = ['json']
 
+# TODO FINISH INTEGRATION FOR CALLS NOT CURRENTLY USED
 
 class InstagramAPI(oauth2.OAuth2API):
 
@@ -159,7 +160,7 @@ class InstagramAPI(oauth2.OAuth2API):
 
     tag_recent_media = bind_method(
                 path="/tags/{tag_name}/media/recent",
-                accepts_parameters=['count', 'max_tag_id', 'tag_name'],
+                accepts_parameters=['tag_name']+MEDIA_ACCEPT_PARAMETERS,
                 root_class=Media,
                 paginates=True)
 
